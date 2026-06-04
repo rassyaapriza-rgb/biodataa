@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic Portfolio | Rassya Apriza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --comic-yellow: #ffde00;
+            --comic-red: #ff0000;
+            --comic-blue: #29a0ff;
+            --comic-cream: #fbf9f3;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: var(--comic-cream);
+            background-image: radial-gradient(#ccc1a3 1.5px, transparent 1.5px);
+            background-size: 16px 16px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .comic-font {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+        }
+
+        .comic-border {
+            border: 4px solid black;
+            box-shadow: 8px 8px 0px 0px black;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: white;
+        }
+
+        .comic-border:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px 0px black;
+        }
+
+        .nav-item {
+            background: white;
+            border: 3px solid black;
+            padding: 6px 18px;
+            margin: 0 4px;
+            font-weight: 900;
+            transform: skew(-12deg);
+            box-shadow: 4px 4px 0px 0px black;
+            transition: all 0.1s ease;
+        }
+
+        .nav-item:hover {
+            background: var(--comic-yellow);
+            transform: skew(-12deg) translate(-2px, -2px);
+        }
+
+        .story-panel {
+            background: white;
+            border: 5px solid black;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            box-shadow: 6px 6px 0px 0px black;
+            overflow: hidden;
+        }
+
+        .story-image-container {
+            height:550px
+            border-bottom: 5px solid black;
+            overflow: hidden;
+        }
+
+        .story-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: none;
+            transition: all 0.5s ease;
+        }
+
+        .story-panel:hover .story-img {
+            filter: none;
+            transform: scale(1.05);
+        }
+
+        .text-overlay-box {
+            padding: 1.5rem;
+        }
+
+        .school-link:hover {
+            text-decoration: underline;
+            color: #2563eb;
+        }
+
+        #skill {
+            background-color: #1d4ed8;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.15) 0,
+                rgba(255, 255, 255, 0.15) 15px,
+                transparent 15px,
+                transparent 35px
+            );
+            border-top: 8px solid black;
+            border-bottom: 8px solid black;
+        }
+
+        #pendidikan {
+            background-color: white;
+            background-image: linear-gradient(0deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent),
+                              linear-gradient(90deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            border-bottom: 8px solid black;
+        }
+
+        #cerita {
+            background-color: #0f172a;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.1) 0,
+                rgba(255, 255, 255, 0.1) 15px,
+                transparent 15px,
+                transparent 35px
+            );
+            border-top: 8px solid black;
+            border-bottom: 8px solid black;
+        }
+    </style>
+</head>
+<body class="text-black">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b-4 border-black py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-bold bg-black text-white px-5 py-1.5 transform -rotate-2 border-2 border-yellow-400 inline-block tracking-wider comic-font shadow-[4px_4px_0px_0px_rgba(255,222,0,1)]">
+                RASSYA APRIZA
+            </div>
+            
+            <div class="hidden md:flex items-center">
+                <a href="#profile" class="nav-item">PROFILE</a>
+                <a href="#skill" class="nav-item">SKILL</a>
+                <a href="#pendidikan" class="nav-item">EDUCATION</a>
+                <a href="#cerita" class="nav-item">STORY</a>
+                <button id="music-btn" class="nav-item bg-purple-600 text-white border-2 border-black hover:bg-purple-500">SOUND: 🔇</button>
+                <a href="#kontak" class="nav-item bg-red-600 text-white hover:bg-red-500">CONTACT</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden px-4 py-2 border-4 border-black font-extrabold bg-yellow-400">MENU</button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden flex flex-col items-center bg-yellow-400 border-t-4 border-black py-6 space-y-4 md:hidden">
+            <a href="#profile" class="font-bold text-lg hover:underline">PROFILE</a>
+            <a href="#skill" class="font-bold text-lg hover:underline">SKILL</a>
+            <a href="#pendidikan" class="font-bold text-lg hover:underline">EDUCATION</a>
+            <a href="#cerita" class="font-bold text-lg hover:underline">STORY</a>
+            <button id="music-btn-mobile" class="font-bold text-lg hover:underline">SOUND: 🔇</button>
+            <a href="#kontak" class="font-bold text-lg bg-red-600 text-white px-6 py-1.5 border-2 border-black transform -rotate-2">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- Audio Element -->
+    <audio id="bg-audio" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Profile -->
+    <section id="profile" class="min-h-screen pt-32 pb-20 px-4 container mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h1 class="text-4xl md:text-6xl mb-2 uppercase leading-none tracking-wide text-black font-black">
+                    MUHAMMAD RASSYA APRIZA
+                </h1>
+                
+                <div class="bg-yellow-400 border-4 border-black p-5 inline-block font-bold transform rotate-1 shadow-[5px_5px_0px_0px_black] min-w-[300px]">
+                    <div class="space-y-2 text-lg md:text-xl text-black">
+                        <p><span class="uppercase">Tempat Lahir:</span> Tangerang</p>
+                        <p><span class="uppercase">Tanggal Lahir:</span> 17 April 2007</p>
+                        <p><span class="uppercase">Agama:</span> Islam</p>
+                    </div>
+                </div>
+                
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="#kontak" class="comic-border bg-red-600 text-white px-8 py-3 text-2xl font-bold uppercase block text-center">Contact</a>
+                    <a href="#cerita" class="comic-border bg-white px-8 py-3 text-2xl font-bold uppercase block text-center">My Story</a>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center items-center">
+                <div class="comic-border p-3 aspect-square max-w-[680px] w-full relative z-10 transform rotate-2">
+                    <img src="rassya.jpeg" alt="Profile Rassya" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill -->
+    <section id="skill" class="py-24 border-t-8 border-b-8 border-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-6xl text-white text-center mb-16 uppercase tracking-wider underline decoration-yellow-400 decoration-8 underline-offset-8">Skill</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="comic-border p-6 flex flex-col h-full transform -rotate-1"><div class="text-5xl mb-4">📄</div><h3 class="text-2xl mb-3 text-blue-600 uppercase">MS Office</h3><p class="font-bold text-sm text-slate-700 flex-grow">Ahli dalam pengolahan data dan laporan profesional.</p></div>
+                <div class="comic-border p-6 flex flex-col h-full transform rotate-1"><div class="text-5xl mb-4">🏗️</div><h3 class="text-2xl mb-3 text-orange-600 uppercase">HTML</h3><p class="font-bold text-sm text-slate-700 flex-grow">Membangun kerangka website yang semantik.</p></div>
+                <div class="comic-border p-6 flex flex-col h-full transform -rotate-1"><div class="text-5xl mb-4">🎨</div><h3 class="text-2xl mb-3 text-indigo-600 uppercase">CSS</h3><p class="font-bold text-sm text-slate-700 flex-grow">Styling responsif dengan Tailwind CSS.</p></div>
+                <div class="comic-border p-6 flex flex-col h-full transform rotate-1"><div class="text-5xl mb-4">✒️</div><h3 class="text-2xl mb-3 text-pink-600 uppercase">Desain Grafis</h3><p class="font-bold text-sm text-slate-700 flex-grow">Menciptakan identitas visual kreatif.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="pendidikan" class="py-24 border-b-8 border-black">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl mb-16 uppercase tracking-widest italic underline decoration-red-500 decoration-wavy underline-offset-8">Pendidikan</h2>
+            <div class="max-w-4xl mx-auto space-y-12 text-left">
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-yellow-400">2025 - Sekarang</div><div class="comic-border p-8 flex-1"><a href="https://www.gunadarma.ac.id/" target="_blank" class="school-link"><h3 class="text-3xl text-blue-600 mb-1 uppercase font-black">Universitas Gunadarma</h3></a></div></div>
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-red-500">2022 - 2025</div><div class="comic-border p-8 flex-1"><a href="https://sman17kabtangerang.sch.id/" target="_blank" class="school-link"><h3 class="text-3xl text-red-600 mb-1 uppercase font-black">SMAN 17 Kab Tangerang</h3></a></div></div>
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-blue-500">2019 - 2022</div><div class="comic-border p-8 flex-1"><a href="https://smp.sch.id/sekolah/20603149" target="_blank" class="school-link"><h3 class="text-3xl text-indigo-600 mb-1 uppercase font-black">SMPN 1 Legok</h3></a></div></div>
+                <div class="flex flex-col md:flex-row gap-6 items-start"><div class="bg-black text-white px-8 py-3 font-bold text-xl min-w-[220px] text-center border-4 border-green-500">2013 - 2019</div><div class="comic-border p-8 flex-1"><a href="https://data-sekolah.zekolah.id/sekolah/sd-negeri-caringin-iii-9132" target="_blank" class="school-link"><h3 class="text-3xl text-emerald-600 mb-1 uppercase font-black">SDN Caringin 3</h3></a></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section id="cerita" class="py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl text-center mb-16 uppercase text-white tracking-wider">Story</h2>
+            <div class="max-w-2xl mx-auto space-y-8">
+                <!-- 4 Momen -->
+                <div class="story-panel"><div class="story-image-container"><img src="sma2.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/1e293b/white?text=Yearbook+SMA'"></div><div class="text-overlay-box"><h3 class="text-blue-600 text-xl uppercase font-black">Yearbook</h3><p class="font-bold">Yearbook menjadi salah satu kenangan paling berharga selama masa SMA. Bersama teman-teman seangkatan, kami mengabadikan momen kebersamaan yang penuh cerita, tawa, dan perjuangan selama tiga tahun menempuh pendidikan. Foto ini menjadi pengingat akan persahabatan dan kenangan yang akan selalu dikenang.</p></div></div>
+                <div class="story-panel"><div class="story-image-container"><img src="sma.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/fbbf24/black?text=Bromo'"></div><div class="text-overlay-box"><h3 class="text-yellow-600 text-xl uppercase font-black">Bromo</h3><p class="font-bold">Perjalanan ke Gunung Bromo bersama teman-teman SMA menjadi pengalaman yang sangat berkesan. Menikmati keindahan alam, menyaksikan matahari terbit, dan menghabiskan waktu bersama membuat perjalanan ini penuh keseruan. Momen ini mempererat persahabatan sekaligus menjadi salah satu kenangan terbaik semasa sekolah..</p></div></div>
+                <div class="story-panel"><div class="story-image-container"><img src="maba.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/4f46e5/white?text=PKKMB'"></div><div class="text-overlay-box"><h3 class="text-indigo-600 text-xl uppercase font-black">PKKMB</h3><p class="font-bold">PKKMB merupakan langkah awal dalam perjalanan sebagai mahasiswa Universitas Gunadarma. Melalui kegiatan ini, saya mendapatkan banyak pengalaman baru, mengenal lingkungan kampus, serta bertemu teman-teman dari berbagai daerah.</p></div></div>
+                <div class="story-panel"><div class="story-image-container"><img src="lebaran.jpeg" class="story-img" onerror="this.src='https://placehold.co/600x400/b91c1c/white?text=Lebaran'"></div><div class="text-overlay-box"><h3 class="text-red-600 text-xl uppercase font-black">Lebaran</h3><p class="font-bold">Hari Raya Idulfitri adalah waktu yang penuh kebahagiaan dan kebersamaan bersama keluarga. Momen berkumpul, saling memaafkan, dan menikmati waktu bersama menjadi hal yang paling berharga. Foto ini mengabadikan kehangatan keluarga yang selalu menjadi sumber semangat dan kebahagiaan.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="py-24 container mx-auto px-4">
+        <div class="max-w-2xl mx-auto comic-border p-8">
+            <h2 class="text-5xl text-center mb-8 uppercase font-black">Contact</h2>
+            <form id="heroForm" class="space-y-6">
+                <div><label class="block font-black uppercase text-sm">Nama</label><input type="text" id="name" required class="w-full border-4 border-black p-3 outline-none font-bold"></div>
+                <div><label class="block font-black uppercase text-sm">Gmail</label><input type="email" id="email" required class="w-full border-4 border-black p-3 outline-none font-bold"></div>
+                <div><label class="block font-black uppercase text-sm">Pesan</label><textarea id="message" rows="3" required class="w-full border-4 border-black p-3 outline-none font-bold"></textarea></div>
+                <button type="submit" class="w-full bg-red-600 text-white font-bold text-3xl py-4 uppercase border-4 border-black hover:bg-black transition-all">KIRIM!</button>
+            </form>
+            <div class="mt-8 pt-8 border-t-4 border-dashed border-black">
+                <a href="https://wa.me/628373356316" target="_blank" class="flex items-center justify-center gap-4 w-full bg-[#25D366] text-white font-bold text-2xl py-4 uppercase border-4 border-black hover:bg-white hover:text-[#25D366] transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.18 0-5.767 2.587-5.767 5.767 0 1.026.273 2.001.782 2.871l-1.043 3.81 3.905-1.025c.828.452 1.772.709 2.787.709 3.18 0 5.767-2.587 5.767-5.766 0-3.18-2.587-5.767-5.767-5.767zm0 10.596c-.846 0-1.637-.23-2.316-.627l-.166-.098-1.722.453.46-1.678-.109-.176c-.468-.755-.715-1.625-.715-2.522 0-2.695 2.194-4.889 4.889-4.889 2.694 0 4.889 2.194 4.889 4.889 0 2.694-2.195 4.889-4.889 4.889z"/></svg>
+                    WHATSAPP ME!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        
+        const audio = document.getElementById('bg-audio');
+        const musicBtns = [document.getElementById('music-btn'), document.getElementById('music-btn-mobile')];
+        let isPlaying = false;
+        
+        musicBtns.forEach(btn => btn.addEventListener('click', () => {
+            if(!isPlaying) {
+                audio.play();
+                isPlaying = true;
+                musicBtns.forEach(b => b.innerText = "SOUND: 🔊");
+            } else {
+                audio.pause();
+                isPlaying = false;
+                musicBtns.forEach(b => b.innerText = "SOUND: 🔇");
+            }
+        }));
+    </script>
+</body>
+</html>
