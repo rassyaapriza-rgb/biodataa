@@ -1,2 +1,0 @@
-# biodataa
-tugas bio data
